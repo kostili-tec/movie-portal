@@ -1,0 +1,12 @@
+@import './reset';
+@import './themes/dark';
+@import './themes/light';
+
+.app {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  min-height: 100vh;
+  a {
+    color: var(--link-color-primary);
+  }
+}
