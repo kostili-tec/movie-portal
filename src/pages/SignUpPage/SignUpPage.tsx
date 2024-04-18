@@ -1,9 +1,9 @@
-import SignUpForm from "../../components/SignUpForm/SignUpForm"
+import LoginForm from "../../components/LoginForm/LoginForm"
 
 const SignUpPage = () => {
   return (
     <div>
-      <SignUpForm />
+      <LoginForm withApiKey={true} />
     </div>
   )
 }

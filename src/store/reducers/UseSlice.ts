@@ -2,23 +2,27 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IUser } from "../../shared/models/IUser"
 
 interface UserState {
-  users: IUser[];
-  isLoading: boolean;
-  error: string;
+  user: IUser;  
 }
 
-const initialState: UserState = {
-  users: [],
-  isLoading: false,
-  error: '',
+const initialState: IUser = {  
+    login: '',
+    password: '',
+    apikey: ''  
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    
+    setUser: (state, action: PayloadAction<IUser>) => {
+      return {...state, ...action.payload};
+    },
+    clearUser: (state) => {
+      return {...initialState};
+    }
   }
 })
 
+export const {setUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;

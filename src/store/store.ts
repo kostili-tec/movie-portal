@@ -1,13 +1,19 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducser from './reducers/UseSlice';
+import { OMDbAPI } from "../services/OMDbAPIService";
+import { checkAuth } from "./reducers/ActionsUser";
 
 const rootReducer = combineReducers({
-  userReducser
+  userReducser,
+  [OMDbAPI.reducerPath]: OMDbAPI.reducer
 });
 
 export const setupStore = () => {
   return configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => {
+      return getDefaultMiddleware().concat(OMDbAPI.middleware);
+    }
   })
 }
 
