@@ -2,13 +2,13 @@ import { Routes, Route } from 'react-router-dom';
 import MainPage from '../pages/MainPage/MainPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import Header from '../widgets/Header/Header';
-// import './App.css';
 import SignUpPage from '../pages/SignUpPage/SignUpPage';
-import './styles/index.scss';
 import { classNames } from '../shared/lib/classNames';
 import { useTheme } from './providers/ThemeProvider/lib/useTheme';
+import './styles/index.scss';
 
 function App() {
+
   const { theme } = useTheme();
   return (
     <div className={classNames('app', {}, [theme])}>
