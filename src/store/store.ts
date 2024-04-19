@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducser from './reducers/UseSlice';
 import { OMDbAPI } from "../services/OMDbAPIService";
-import { checkAuth } from "./reducers/ActionsUser";
 
 const rootReducer = combineReducers({
   userReducser,

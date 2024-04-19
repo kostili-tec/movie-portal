@@ -8,7 +8,8 @@ interface UserState {
 const initialState: IUser = {  
     login: '',
     password: '',
-    apikey: ''  
+    apikey: '',
+    isAuth: false,
 }
 
 export const userSlice = createSlice({
