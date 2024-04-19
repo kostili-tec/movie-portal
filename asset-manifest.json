@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/movie-portal/static/css/main.cffb1f98.css",
+    "main.js": "/movie-portal/static/js/main.9ac077ea.js",
+    "index.html": "/movie-portal/index.html",
+    "main.cffb1f98.css.map": "/movie-portal/static/css/main.cffb1f98.css.map",
+    "main.9ac077ea.js.map": "/movie-portal/static/js/main.9ac077ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cffb1f98.css",
+    "static/js/main.9ac077ea.js"
+  ]
+}
