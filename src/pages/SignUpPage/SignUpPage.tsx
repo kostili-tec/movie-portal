@@ -1,10 +1,11 @@
 import LoginForm from '../../components/LoginForm/LoginForm';
 import useFormState from '../../shared/hooks/useForm';
+import { classNames } from '../../shared/lib/classNames';
 
 const SignUpPage = () => {
   const { handleInputChange, handleSubmit } = useFormState();
   return (
-    <div>
+    <div className={classNames('page-center')}>
       <LoginForm handleInputChange={handleInputChange} handleSubmit={handleSubmit} withApiKey />
     </div>
   );

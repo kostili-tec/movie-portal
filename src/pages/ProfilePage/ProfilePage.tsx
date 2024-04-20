@@ -1,15 +1,26 @@
-import React, { useId } from 'react';
+import React, { useState } from 'react';
 import { useAppSelector } from '../../shared/hooks/redux';
+import { classNames } from '../../shared/lib/classNames';
+import InputText from '../../components/InputText/InputText';
+import classes from './ProfilePage.module.scss';
 
 const ProfilePage = () => {
-  const apiKeyInputId = useId();
   const { login, apikey } = useAppSelector((state) => state.userReducser);
+  const [apiState, setApiState] = useState(apikey);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setApiState(e.target.value);
   return (
-    <div>
+    <div className={classNames('page-center')}>
       <h2>{login}</h2>
-      <form action="">
-        <label htmlFor={apiKeyInputId} />
-        <input type="text" id={apiKeyInputId} defaultValue={apikey} />
+      <form className={classNames('', {}, [classes.profileForm])} action="">
+        <InputText
+          label="Api Key"
+          name="apikey"
+          onChange={handleInputChange}
+          type="text"
+          defaultValue={apiState}
+        />
+        <input className="submit" type="submit" value="Change Api Key" />
       </form>
     </div>
   );

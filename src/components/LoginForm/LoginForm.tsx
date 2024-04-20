@@ -1,6 +1,7 @@
-import React, { FC, useId } from 'react';
+import React, { FC } from 'react';
 import classes from './LoginForm.module.scss';
 import { classNames } from '../../shared/lib/classNames';
+import InputText from '../InputText/InputText';
 
 interface SignUpFormProps {
   withApiKey?: boolean;
@@ -8,30 +9,28 @@ interface SignUpFormProps {
   handleSubmit: (e: React.FormEvent) => void;
 }
 
-const LoginForm: FC<SignUpFormProps> = ({ handleInputChange, handleSubmit, withApiKey }) => {
-  const loginId = useId();
-  const passwordId = useId();
-  const apiKeyId = useId();
+const LoginForm: FC<SignUpFormProps> = ({ handleInputChange, handleSubmit, withApiKey }) => (
+  <form className={classNames('', {}, [classes.loginForm])} onSubmit={handleSubmit}>
+    <InputText
+      label="Login"
+      name="login"
+      type="text"
+      autoComplete="username"
+      onChange={handleInputChange}
+    />
+    <InputText
+      label="Password"
+      name="password"
+      type="password"
+      autoComplete="current-password"
+      onChange={handleInputChange}
+    />
 
-  return (
-    <form className={classNames('', {}, [classes.loginForm])} onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor={loginId}>Login</label>
-        <input type="text" name="login" id={loginId} onChange={handleInputChange} />
-      </div>
-      <div>
-        <label htmlFor={passwordId}>Password</label>
-        <input type="password" name="password" id={passwordId} onChange={handleInputChange} />
-      </div>
-      {withApiKey && (
-        <div>
-          <label htmlFor={apiKeyId}>ApiKey</label>
-          <input type="text" name="apiKey" id={apiKeyId} onChange={handleInputChange} />
-        </div>
-      )}
-      <input type="submit" value={withApiKey ? 'Sign Up' : 'Login'} />
-    </form>
-  );
-};
+    {withApiKey && (
+      <InputText label="ApiKey" name="apiKey" type="text" onChange={handleInputChange} />
+    )}
+    <input className={classes.submit} type="submit" value={withApiKey ? 'Sign Up' : 'Login'} />
+  </form>
+);
 
 export default LoginForm;

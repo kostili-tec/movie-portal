@@ -27,9 +27,12 @@ const Header = () => {
             <AppLink to="/sign_up">Sign Up</AppLink>
           </>
         ) : (
-          <AppLink to="/" onClick={() => dispatch(logoutUser())}>
-            Logout
-          </AppLink>
+          <>
+            <AppLink to="/" onClick={() => dispatch(logoutUser())}>
+              Logout
+            </AppLink>
+            <AppLink to="/profile">Profile</AppLink>
+          </>
         )}
       </div>
       <ThemeSwitcher />
