@@ -8,8 +8,10 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'plugin:react/recommended',
+    'prettier'
     // 'plugin:i18next/recommended',
   ],
+  parser: "@typescript-eslint/parser",
   overrides: [
     {
       env: {
@@ -31,6 +33,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'prettier'
     // 'i18next',
   ],
 
@@ -53,6 +56,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_' }],
     '@typescript-eslint/naming-convention': 'warn',
+    'prettier/prettier': ["error"]
     // 'i18next/no-literal-string': ['warn', { markupOnly: true }],
   },
   globals: {
