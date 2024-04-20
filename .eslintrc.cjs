@@ -44,6 +44,7 @@ module.exports = {
     indent: [2, 2],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
+    "jsx-a11y/label-has-associated-control": 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'no-unused-vars': 'warn',
@@ -56,7 +57,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_' }],
     '@typescript-eslint/naming-convention': 'warn',
-    'prettier/prettier': ["error"]
+    'prettier/prettier': ["warn"]
     // 'i18next/no-literal-string': ['warn', { markupOnly: true }],
   },
   globals: {

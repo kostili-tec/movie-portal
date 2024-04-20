@@ -1,33 +1,37 @@
-import React, { FC } from "react";
+import React, { FC, useId } from 'react';
 import classes from './LoginForm.module.scss';
-import { classNames } from "../../shared/lib/classNames";
+import { classNames } from '../../shared/lib/classNames';
 
 interface SignUpFormProps {
-  withApiKey?: boolean
+  withApiKey?: boolean;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
 }
 
-const LoginForm: FC<SignUpFormProps> = ({handleInputChange, handleSubmit, withApiKey}) => {
+const LoginForm: FC<SignUpFormProps> = ({ handleInputChange, handleSubmit, withApiKey }) => {
+  const loginId = useId();
+  const passwordId = useId();
+  const apiKeyId = useId();
+
   return (
     <form className={classNames('', {}, [classes.loginForm])} onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="login">Login</label>
-        <input id="login" name="login" type="text" onChange={handleInputChange}/>
+        <label htmlFor={loginId}>Login</label>
+        <input type="text" name="login" id={loginId} onChange={handleInputChange} />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" onChange={handleInputChange} />
+        <label htmlFor={passwordId}>Password</label>
+        <input type="password" name="password" id={passwordId} onChange={handleInputChange} />
       </div>
       {withApiKey && (
         <div>
-          <label htmlFor="apiKey">ApiKey</label>
-          <input type="text" name="apiKey" id="apiKey" onChange={handleInputChange}/>
+          <label htmlFor={apiKeyId}>ApiKey</label>
+          <input type="text" name="apiKey" id={apiKeyId} onChange={handleInputChange} />
         </div>
       )}
       <input type="submit" value={withApiKey ? 'Sign Up' : 'Login'} />
     </form>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

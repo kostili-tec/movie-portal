@@ -16,17 +16,16 @@ function App() {
   useEffect(() => {
     dispatch(checkAuth());
   }, []);
-  const {isAuth} = useAppSelector(state => state.userReducser);
+  const { isAuth } = useAppSelector((state) => state.userReducser);
   const { theme } = useTheme();
   return (
     <div className={classNames('app', {}, [theme])}>
-     
       <Header />
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/sign_up' element={isAuth ? <Navigate to='/'/> : <SignUpPage />} />
-        <Route path='/login' element={isAuth ? <Navigate to='/'/> : <LoginPage />} />
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/sign_up" element={isAuth ? <Navigate to="/" /> : <SignUpPage />} />
+        <Route path="/login" element={isAuth ? <Navigate to="/" /> : <LoginPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

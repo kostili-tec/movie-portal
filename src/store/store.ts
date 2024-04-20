@@ -1,21 +1,18 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducser from './reducers/UseSlice';
-import { OMDbAPI } from "../services/OMDbAPIService";
+import { OMDbAPI } from '../services/OMDbAPIService';
 
 const rootReducer = combineReducers({
   userReducser,
-  [OMDbAPI.reducerPath]: OMDbAPI.reducer
+  [OMDbAPI.reducerPath]: OMDbAPI.reducer,
 });
 
-export const setupStore = () => {
-  return configureStore({
+export const setupStore = () =>
+  configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat(OMDbAPI.middleware);
-    }
-  })
-}
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(OMDbAPI.middleware),
+  });
 
-export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore>
-export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];

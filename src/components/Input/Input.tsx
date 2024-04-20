@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const Input = () => {
-  return (
-    <div>Input</div>
-  )
-}
+const Input = () => <div>Input</div>;
 
-export default Input
+export default Input;
