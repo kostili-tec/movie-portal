@@ -2,7 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { userSlice } from './UseSlice';
 
 export const registerUser =
-  (login: string, password: string, apikey: string) => (dispatch: Dispatch) => {
+  (login: string, password: string, apiKey: string) => (dispatch: Dispatch) => {
     const { setUser } = userSlice.actions;
     const isAuth = true;
     localStorage.setItem(
@@ -10,7 +10,7 @@ export const registerUser =
       JSON.stringify({
         login,
         password,
-        apikey,
+        apiKey,
         isAuth,
       })
     );
@@ -19,7 +19,7 @@ export const registerUser =
       setUser({
         login,
         password,
-        apikey,
+        apiKey,
         isAuth,
       })
     );
@@ -42,12 +42,12 @@ export const checkAuth = () => (dispatch: Dispatch) => {
   const userData = localStorage.getItem('userData');
   console.log('userData', userData);
   if (userData) {
-    const { login, password, apikey, isAuth } = JSON.parse(userData);
+    const { login, password, apiKey, isAuth } = JSON.parse(userData);
     dispatch(
       setUser({
         login,
         password,
-        apikey,
+        apiKey,
         isAuth,
       })
     );

@@ -1,6 +1,6 @@
 export interface IUser {
   login: string;
   password: string;
-  apikey: string;
+  apiKey: string;
   isAuth: boolean;
 }

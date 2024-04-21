@@ -4,7 +4,7 @@ import { IUser } from '../../shared/models/IUser';
 const initialState: IUser = {
   login: '',
   password: '',
-  apikey: '',
+  apiKey: '',
   isAuth: false,
 };
 
