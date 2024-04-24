@@ -2,14 +2,16 @@ import React, { FC } from 'react';
 import classes from './LoginForm.module.scss';
 import { classNames } from '../../shared/lib/classNames';
 import InputText from '../InputText/InputText';
+import { FormStateBooleanType } from '../../shared/hooks/useForm';
 
 interface SignUpFormProps {
-  withApiKey?: boolean;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
+  withApiKey?: boolean;
+  errorState?: FormStateBooleanType;
 }
 
-const LoginForm: FC<SignUpFormProps> = ({ handleInputChange, handleSubmit, withApiKey }) => (
+const LoginForm: FC<SignUpFormProps> = ({ handleInputChange, handleSubmit, withApiKey, errorState }) => (
   <form className={classNames('', {}, [classes.loginForm])} onSubmit={handleSubmit}>
     <InputText
       label="Login"
@@ -18,6 +20,7 @@ const LoginForm: FC<SignUpFormProps> = ({ handleInputChange, handleSubmit, withA
       autoComplete="username"
       onChange={handleInputChange}
     />
+    {errorState && errorState.login && <p className={classes.error}>{errorState.login}</p>}
     <InputText
       label="Password"
       name="password"
