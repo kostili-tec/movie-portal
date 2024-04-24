@@ -1,5 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit';
-import { userSlice } from './UseSlice';
+import { userSlice } from './UserSlice';
 
 export const registerUser =
   (login: string, password: string, apiKey: string) => (dispatch: Dispatch) => {

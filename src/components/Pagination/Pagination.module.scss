@@ -1,0 +1,40 @@
+.ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+
+.li {
+  // padding: 5px;
+  background-color: var(--violet-color);
+  cursor: default;  
+}
+
+.button {
+  border: none;
+  background-color: var(--violet-color);
+  color: var(--font-color);
+  padding: 5px;
+  min-width: 30px;
+  
+}
+
+.buttonUsable {
+  cursor: pointer;
+}
+
+.active {
+  background-color: orange;
+}
+
+/* .pointer {
+  cursor: pointer;
+  button {
+    cursor: pointer;
+  }
+} */

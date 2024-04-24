@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducser from './reducers/UseSlice';
+import userReducser from './reducers/UserSlice';
+import catalogReducer from './reducers/CatalogSlice';
 import { OMDbAPI } from '../services/OMDbAPIService';
 
 const rootReducer = combineReducers({
   userReducser,
+  catalogReducer,
   [OMDbAPI.reducerPath]: OMDbAPI.reducer,
 });
 

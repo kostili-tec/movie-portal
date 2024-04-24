@@ -10,6 +10,7 @@ interface MovieSearchResult {
 interface FetchMoviesArgs {
   apiKey: string;
   searchTerm: string;
+  page?: string | number;
 }
 
 export const OMDbAPI = createApi({
@@ -21,7 +22,12 @@ export const OMDbAPI = createApi({
         url: `/?apikey=${apiKey}&s=${searchTerm}`,
       }),
     }),
+    findMovies: build.query<MovieSearchResult, FetchMoviesArgs>({
+      query: ({ apiKey, searchTerm, page }) => ({
+        url: `/?apikey=${apiKey}&s=${searchTerm}&page=${page}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetMoviesQuery } = OMDbAPI;
+export const { useGetMoviesQuery, useFindMoviesQuery } = OMDbAPI;
