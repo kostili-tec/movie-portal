@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux';
 import { useFindMoviesQuery } from '../../services/OMDbAPIService';
 import { MovieCardMemo } from '../MovieCard/MovieCard';
