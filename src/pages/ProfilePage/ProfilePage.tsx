@@ -5,7 +5,7 @@ import InputText from '../../components/InputText/InputText';
 import classes from './ProfilePage.module.scss';
 
 const ProfilePage = () => {
-  const { login, apiKey } = useAppSelector((state) => state.userReducser);
+  const { login, apiKey } = useAppSelector((state) => state.userReducer);
   const [apiState, setApiState] = useState(apiKey);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setApiState(e.target.value);

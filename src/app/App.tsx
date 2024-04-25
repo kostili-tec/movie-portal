@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     dispatch(checkAuth());
   }, []);
-  const { isAuth } = useAppSelector((state) => state.userReducser);
+  const { isAuth } = useAppSelector((state) => state.userReducer);
   const { theme } = useTheme();
   return (
     <div className={classNames('app', {}, [theme])}>

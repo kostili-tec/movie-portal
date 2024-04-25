@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from '../../shared/hooks/redux';
 import { logoutUser } from '../../store/reducers/ActionsUser';
 
 const Header = () => {
-  const { isAuth } = useAppSelector((state) => state.userReducser);
+  const { isAuth } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
   return (
     <header className={classes.header}>

@@ -2,7 +2,7 @@ import MoviesContainer from '../../components/MoviesContainer/MoviesContainer';
 import { useAppSelector } from '../../shared/hooks/redux';
 
 const MainPage = () => {
-  const { isAuth } = useAppSelector((state) => state.userReducser);
+  const { isAuth } = useAppSelector((state) => state.userReducer);
   return <div>{isAuth ? <MoviesContainer /> : <div>Main Page</div>}</div>;
 };
 

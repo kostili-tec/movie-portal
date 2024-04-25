@@ -9,7 +9,7 @@ import classes from './MoviesContainer.module.scss';
 
 const MoviesContainer = () => {
   const dispatch = useAppDispatch();
-  const { apiKey } = useAppSelector((state) => state.userReducser);
+  const { apiKey } = useAppSelector((state) => state.userReducer);
   const catalogState = useAppSelector((state) => state.catalogReducer);
   const { page, searchTerm } = catalogState;
   const { data, isFetching } = useFindMoviesQuery({ apiKey, searchTerm, page });
