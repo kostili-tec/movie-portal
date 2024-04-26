@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/movie-portal/static/css/main.0d753947.css",
-    "main.js": "/movie-portal/static/js/main.cc4442cc.js",
+    "main.css": "/movie-portal/static/css/main.cc5399ad.css",
+    "main.js": "/movie-portal/static/js/main.42f20967.js",
     "index.html": "/movie-portal/index.html",
-    "main.0d753947.css.map": "/movie-portal/static/css/main.0d753947.css.map",
-    "main.cc4442cc.js.map": "/movie-portal/static/js/main.cc4442cc.js.map"
+    "main.cc5399ad.css.map": "/movie-portal/static/css/main.cc5399ad.css.map",
+    "main.42f20967.js.map": "/movie-portal/static/js/main.42f20967.js.map"
   },
   "entrypoints": [
-    "static/css/main.0d753947.css",
-    "static/js/main.cc4442cc.js"
+    "static/css/main.cc5399ad.css",
+    "static/js/main.42f20967.js"
   ]
 }
