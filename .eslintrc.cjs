@@ -52,7 +52,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': 'off',
-    'react/no-unknown-property': 'off',
+    // 'react/no-unknown-property': 'off',
     'no-shadow': 'off',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',

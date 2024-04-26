@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IMovie } from '../shared/models/IMovie';
+import { IMovieDetails } from '../shared/models/IMovieDetails';
 
 interface MovieSearchResult {
   Search: IMovie[];
@@ -11,6 +12,11 @@ interface FetchMoviesArgs {
   apiKey: string;
   searchTerm: string;
   page?: string | number;
+}
+
+interface GetMovieByIdArgs {
+  apiKey: string;
+  movieId: string;
 }
 
 export const OMDbAPI = createApi({
@@ -27,7 +33,12 @@ export const OMDbAPI = createApi({
         url: `/?apikey=${apiKey}&s=${searchTerm}&page=${page}`,
       }),
     }),
+    getMovieById: build.query<IMovieDetails, GetMovieByIdArgs>({
+      query: ({ apiKey, movieId }) => ({
+        url: `/?apikey=${apiKey}&i=${movieId}`,
+      }),
+    }),
   }),
 });
 
-export const { useGetMoviesQuery, useFindMoviesQuery } = OMDbAPI;
+export const { useGetMoviesQuery, useFindMoviesQuery, useGetMovieByIdQuery } = OMDbAPI;

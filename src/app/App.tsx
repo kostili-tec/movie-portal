@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '../shared/hooks/redux';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import './styles/index.scss';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import MoviePage from '../pages/MoviePage/MoviePage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ function App() {
       <main className={classNames('main')}>
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/movie/:id" element={isAuth ? <MoviePage /> : <Navigate to="/login" />} />
           <Route path="/sign_up" element={isAuth ? <Navigate to="/" /> : <SignUpPage />} />
           <Route path="/login" element={isAuth ? <Navigate to="/" /> : <LoginPage />} />
           <Route path="/profile" element={isAuth ? <ProfilePage /> : <Navigate to="/login" />} />
