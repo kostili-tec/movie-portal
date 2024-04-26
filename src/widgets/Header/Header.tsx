@@ -14,6 +14,7 @@ const Header = () => {
           <li>
             <AppLink to="/">Main</AppLink>
           </li>
+          <li>{isAuth && <AppLink to="/favorites">Favorites</AppLink>}</li>
         </ul>
       </nav>
       <div className={classes.headerAuth}>
