@@ -15,7 +15,7 @@ interface FetchMoviesArgs {
 
 export const OMDbAPI = createApi({
   reducerPath: 'OMDbAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://www.omdbapi.com' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://www.omdbapi.com' }),
   endpoints: (build) => ({
     getMovies: build.query<MovieSearchResult, FetchMoviesArgs>({
       query: ({ apiKey, searchTerm }) => ({
