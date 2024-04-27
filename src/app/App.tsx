@@ -12,6 +12,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import './styles/index.scss';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import MoviePage from '../pages/MoviePage/MoviePage';
+import FavoritesPage from '../pages/FavoritesPage/FavoritesPage';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,6 +31,10 @@ function App() {
           <Route path="/sign_up" element={isAuth ? <Navigate to="/" /> : <SignUpPage />} />
           <Route path="/login" element={isAuth ? <Navigate to="/" /> : <LoginPage />} />
           <Route path="/profile" element={isAuth ? <ProfilePage /> : <Navigate to="/login" />} />
+          <Route
+            path="/favorites"
+            element={isAuth ? <FavoritesPage /> : <Navigate to="/login" />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
