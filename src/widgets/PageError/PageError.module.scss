@@ -1,0 +1,30 @@
+.error {
+  background-color: #282c34;
+  color: #fff;
+  min-height: 100vh;
+  font-family: 'Montserrat';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  gap: 2rem;
+  font-size: 2rem;
+  button {
+    border-color: #818cf8;
+    color: #818cf8;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  a {
+    color: #818cf8;
+  }
+}

@@ -3,6 +3,7 @@ import { useAppSelector } from '../../shared/hooks/redux';
 import { classNames } from '../../shared/lib/classNames';
 import InputText from '../../components/InputText/InputText';
 import classes from './ProfilePage.module.scss';
+import BugButton from '../../app/providers/ThemeProvider/ErrorBoundary/BugButton';
 
 const ProfilePage = () => {
   const { login, apiKey } = useAppSelector((state) => state.userReducer);
@@ -21,6 +22,7 @@ const ProfilePage = () => {
           defaultValue={apiState}
         />
         <input className="submit" type="submit" value="Change Api Key" />
+        <BugButton />
       </form>
     </div>
   );
