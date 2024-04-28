@@ -5,6 +5,7 @@ import { classNames } from '../../shared/lib/classNames';
 import Pagination from '../Pagination/Pagination';
 import { setCatalog } from '../../store/reducers/CatalogSlice';
 import classes from './MoviesContainer.module.scss';
+import PageLoader from '../../widgets/PageLoader/PageLoader';
 
 const MoviesContainer = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const MoviesContainer = () => {
   const { data, isFetching } = useFindMoviesQuery({ apiKey, searchTerm, page });
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <PageLoader />;
   }
   if (!data.totalResults) {
     return <div>No movies</div>;

@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../shared/hooks/redux';
 import { useGetMovieByIdQuery } from '../../services/OMDbAPIService';
 import MovieContainer from '../../components/MovieContainer/MovieContainer';
+import PageLoader from '../../widgets/PageLoader/PageLoader';
 
 const MoviePage = () => {
   const params = useParams();
@@ -9,7 +10,7 @@ const MoviePage = () => {
   const { data, isFetching } = useGetMovieByIdQuery({ apiKey, movieId: params.id });
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <PageLoader />;
   }
 
   if (!data) {
