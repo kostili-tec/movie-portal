@@ -1,6 +1,7 @@
 import { IMovieDetails } from '../models/IMovieDetails';
 
-export const getFavorites = (): IMovieDetails[] => JSON.parse(localStorage.getItem('favorites')) || [];
+export const getFavorites = (): IMovieDetails[] =>
+  JSON.parse(localStorage.getItem('favorites')) || [];
 
 export const checkIsFavorite = (id: string) => {
   const favorites = getFavorites();

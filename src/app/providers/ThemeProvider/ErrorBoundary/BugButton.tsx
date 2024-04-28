@@ -12,7 +12,7 @@ const BugButton = () => {
   }, [error]);
 
   return (
-    <button type="button" onClick={onThrow} className='submit'>
+    <button type="button" onClick={onThrow} className="submit">
       throw error
     </button>
   );
