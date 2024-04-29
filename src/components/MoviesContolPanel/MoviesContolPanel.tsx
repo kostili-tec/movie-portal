@@ -4,16 +4,17 @@ import classes from './MoviesContolPanel.module.scss';
 import { classNames } from '../../shared/lib/classNames';
 
 interface MoviesContolPanelProps {
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeInput: React.ChangeEventHandler<HTMLInputElement>;
+  onChangeSelect: React.ChangeEventHandler<HTMLSelectElement>;
   onSubmit: (e: React.FormEvent) => void;
 }
 
 const MoviesContolPanel: FC<MoviesContolPanelProps> = (props) => {
-  const { onChange, onSubmit } = props;
+  const { onChangeInput, onChangeSelect, onSubmit } = props;
   return (
     <form action="" onSubmit={onSubmit} className={classNames('', {}, [classes.controlForm])}>
       <div className={classes.searchContainer}>
-        <InputText label="Search" name="search" type="text" onChange={onChange} />
+        <InputText label="Search" name="search" type="text" onChange={onChangeInput} />
         <button className={classNames('', {}, [classes.searchBtn])} id="search" type="submit">
           <svg
             width="25px"
@@ -32,6 +33,27 @@ const MoviesContolPanel: FC<MoviesContolPanelProps> = (props) => {
           </svg>
         </button>
       </div>
+      <div>
+        <label htmlFor="year:">Year</label>
+        <input
+          onChange={onChangeInput}
+          id="year"
+          name="year"
+          type="number"
+          min={1900}
+          max={2024}
+          className={classes.year}
+          defaultValue=""
+        />
+      </div>
+      <label htmlFor="type">Type:</label>
+      <select onChange={onChangeSelect} name="type" id="type">
+        <option value="">All</option>
+        <option value="movie">Movie</option>
+        <option value="series">Series</option>
+        <option value="episode">Episode</option>
+        <option value="game">Game</option>
+      </select>
     </form>
   );
 };

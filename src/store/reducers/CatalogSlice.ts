@@ -6,6 +6,8 @@ interface ICatalog {
   searchTerm: string;
   count: number;
   sort: string;
+  year: string;
+  type: string;
 }
 
 const initialState: ICatalog = {
@@ -14,6 +16,8 @@ const initialState: ICatalog = {
   limit: 10,
   searchTerm: 'star wars',
   sort: '',
+  year: '',
+  type: '',
 };
 
 export const catalogSlice = createSlice({

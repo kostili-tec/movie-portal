@@ -4,17 +4,41 @@ import { useAppSelector, useAppDispatch } from '../../shared/hooks/redux';
 import { setCatalog } from '../../store/reducers/CatalogSlice';
 import MoviesContolPanel from '../../components/MoviesContolPanel/MoviesContolPanel';
 
+interface SearchState {
+  search: string;
+  year: string;
+  type: string;
+}
+
 const MainPage = () => {
   const { isAuth } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
-  const [searchState, setSearchState] = useState('');
+  const [searchFormState, setSearchFormState] = useState<SearchState>({
+    search: '',
+    year: '',
+    type: '',
+  });
   const catalogState = useAppSelector((state) => state.catalogReducer);
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchState(e.target.value);
-  };
+
   const handleSumbitSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(setCatalog({ ...catalogState, searchTerm: searchState, page: 1 }));
+    const { search, type, year } = searchFormState;
+    dispatch(setCatalog({ ...catalogState, type, year, searchTerm: search, page: 1 }));
+  };
+
+  const handleSearchFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSearchFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleChangeType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSearchFormState((prevState) => ({
+      ...prevState,
+      type: e.target.value,
+    }));
   };
 
   if (!isAuth) {
@@ -22,7 +46,11 @@ const MainPage = () => {
   }
   return (
     <div>
-      <MoviesContolPanel onChange={handleSearch} onSubmit={handleSumbitSearch} />
+      <MoviesContolPanel
+        onChangeInput={handleSearchFormChange}
+        onChangeSelect={handleChangeType}
+        onSubmit={handleSumbitSearch}
+      />
       <MoviesContainer />
     </div>
   );

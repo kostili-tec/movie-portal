@@ -12,6 +12,8 @@ interface FetchMoviesArgs {
   apiKey: string;
   searchTerm: string;
   page?: string | number;
+  type?: string;
+  year?: string;
 }
 
 interface GetMovieByIdArgs {
@@ -29,8 +31,8 @@ export const OMDbAPI = createApi({
       }),
     }),
     findMovies: build.query<MovieSearchResult, FetchMoviesArgs>({
-      query: ({ apiKey, searchTerm, page }) => ({
-        url: `/?apikey=${apiKey}&s=${searchTerm}&page=${page}`,
+      query: ({ apiKey, searchTerm, page, type, year }) => ({
+        url: `/?apikey=${apiKey}&s=${searchTerm}&page=${page}&type=${type}&y=${year}`,
       }),
     }),
     getMovieById: build.query<IMovieDetails, GetMovieByIdArgs>({
