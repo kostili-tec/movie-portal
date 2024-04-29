@@ -3,6 +3,7 @@ import { chunkArray, getFavorites } from '../../shared/lib/favorites';
 import { MovieCardMemo } from '../../components/MovieCard/MovieCard';
 import { classNames } from '../../shared/lib/classNames';
 import { IMovieDetails } from '../../shared/models/IMovieDetails';
+import { useAppSelector } from '../../shared/hooks/redux';
 import Pagination from '../../components/Pagination/Pagination';
 
 interface IFavoritesState {
@@ -12,7 +13,8 @@ interface IFavoritesState {
 }
 
 const FavoritesPage = () => {
-  const favMovies = getFavorites();
+  const { login } = useAppSelector((state) => state.userReducer);
+  const favMovies = getFavorites(login);
   const pageLimit = 10;
   const [favoritesState, setFavoritesState] = useState<IFavoritesState>({
     page: 1,

@@ -5,13 +5,11 @@ import { loginUser, registerUser } from '../../store/reducers/ActionsUser';
 interface FormState {
   login: string;
   password: string;
-  apiKey: string;
 }
 
 const initialFormState: FormState = {
   login: '',
   password: '',
-  apiKey: '',
 };
 
 const useFormState = () => {
@@ -30,22 +28,25 @@ const useFormState = () => {
     setFormState(initialFormState);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmitLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const { login, password, apiKey } = formState;
-    if (apiKey) {
-      dispatch(registerUser(login, password, apiKey));
-      console.log('form submitted:', formState);
-    } else {
-      dispatch(loginUser(login, password));
-    }
+    const { login, password } = formState;
+    dispatch(loginUser(login, password));
+    resetForm();
+  };
+
+  const handleSubmitRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { login, password } = formState;
+    dispatch(registerUser(login, password));
     resetForm();
   };
 
   return {
     formState,
     handleInputChange,
-    handleSubmit,
+    handleSubmitLogin,
+    handleSubmitRegister,
     resetForm,
   };
 };

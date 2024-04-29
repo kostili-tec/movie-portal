@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { AppLink } from '../../components/AppLink/AppLink';
 import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
 import { useAppSelector, useAppDispatch } from '../../shared/hooks/redux';
@@ -7,6 +8,12 @@ import classes from './Header.module.scss';
 const Header = () => {
   const { isAuth, login } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logoutUser(login));
+    navigate('/');
+    window.location.reload();
+  };
   return (
     <header className={classes.header}>
       <nav>
@@ -25,10 +32,10 @@ const Header = () => {
           </>
         ) : (
           <>
-            <AppLink to="/profile">{login}</AppLink>
-            <AppLink to="/" onClick={() => dispatch(logoutUser())}>
+            <span>{login}</span>
+            <button type="button" onClick={handleLogout}>
               Logout
-            </AppLink>
+            </button>
           </>
         )}
         <ThemeSwitcher />

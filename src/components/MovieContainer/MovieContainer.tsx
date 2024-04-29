@@ -7,10 +7,11 @@ import FavoritesButton from '../../widgets/FavoritesButton/FavoritesButton';
 
 interface MovieContainerProps {
   movie: IMovieDetails;
+  login: string;
 }
 
-const MovieContainer: FC<MovieContainerProps> = ({ movie }) => {
-  const isFavorite = checkIsFavorite(movie.imdbID);
+const MovieContainer: FC<MovieContainerProps> = ({ movie, login }) => {
+  const isFavorite = checkIsFavorite(login, movie.imdbID);
   return (
     <div className={classNames('', {}, [classes.movieContainer])}>
       <h2>
@@ -91,7 +92,7 @@ const MovieContainer: FC<MovieContainerProps> = ({ movie }) => {
         <strong>Website:</strong> {movie.Website}
       </p>
 
-      <FavoritesButton movie={movie} isFavorite={isFavorite} />
+      <FavoritesButton movie={movie} login={login} isFavorite={isFavorite} />
     </div>
   );
 };

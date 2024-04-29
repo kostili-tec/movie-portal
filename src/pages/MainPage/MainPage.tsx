@@ -11,14 +11,13 @@ interface SearchState {
 }
 
 const MainPage = () => {
-  const { isAuth } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
+  const catalogState = useAppSelector((state) => state.catalogReducer);
   const [searchFormState, setSearchFormState] = useState<SearchState>({
     search: '',
     year: '',
     type: '',
   });
-  const catalogState = useAppSelector((state) => state.catalogReducer);
 
   const handleSumbitSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,9 +40,6 @@ const MainPage = () => {
     }));
   };
 
-  if (!isAuth) {
-    return <div>Main Page</div>;
-  }
   return (
     <div>
       <MoviesContolPanel

@@ -9,10 +9,9 @@ import PageLoader from '../../widgets/PageLoader/PageLoader';
 
 const MoviesContainer = () => {
   const dispatch = useAppDispatch();
-  const { apiKey } = useAppSelector((state) => state.userReducer);
   const catalogState = useAppSelector((state) => state.catalogReducer);
   const { page, searchTerm, type, year } = catalogState;
-  const { data, isFetching } = useFindMoviesQuery({ apiKey, searchTerm, page, type, year });
+  const { data, isFetching } = useFindMoviesQuery({ searchTerm, page, type, year });
 
   if (isFetching) {
     return <PageLoader />;

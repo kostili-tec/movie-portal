@@ -2,7 +2,6 @@ import { RouteProps } from 'react-router-dom';
 import MainPage from '../../../../../pages/MainPage/MainPage';
 import SignUpPage from '../../../../../pages/SignUpPage/SignUpPage';
 import LoginPage from '../../../../../pages/LoginPage/LoginPage';
-import ProfilePage from '../../../../../pages/ProfilePage/ProfilePage';
 import NotFoundPage from '../../../../../pages/NotFoundPage/NotFoundPage';
 import FavoritesPage from '../../../../../pages/FavoritesPage/FavoritesPage';
 import MoviePage from '../../../../../pages/MoviePage/MoviePage';
@@ -11,7 +10,6 @@ export enum AppRoutes {
   MAIN = 'main',
   SIGN_UP = 'sign_up',
   LOGIN = 'login',
-  PROFILE = 'profile',
   FAVORITES = 'favorites',
   MOVIE = 'movie/:id',
   NOT_FOUND = 'not_found',
@@ -21,7 +19,6 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.SIGN_UP]: '/sign_up',
   [AppRoutes.LOGIN]: '/login',
-  [AppRoutes.PROFILE]: '/profile',
   [AppRoutes.FAVORITES]: '/favorites',
   [AppRoutes.MOVIE]: '/movie/:id',
   [AppRoutes.NOT_FOUND]: '*',
@@ -51,15 +48,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <LoginPage />,
     privateFor: Private.FOR_USER,
   },
-  [AppRoutes.PROFILE]: {
-    path: RoutePath.profile,
-    element: <ProfilePage />,
-    privateFor: Private.FOR_GUEST,
-  },
   [AppRoutes.MOVIE]: {
     path: RoutePath['movie/:id'],
     element: <MoviePage />,
-    privateFor: Private.FOR_GUEST,
+    // privateFor: Private.FOR_GUEST,
   },
   [AppRoutes.FAVORITES]: {
     path: RoutePath.favorites,

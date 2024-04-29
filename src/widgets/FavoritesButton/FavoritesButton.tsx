@@ -1,21 +1,28 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IMovieDetails } from '../../shared/models/IMovieDetails';
 import { addToFavorites, removeFromFavorites } from '../../shared/lib/favorites';
 
 interface FavoritesButtonProps {
   movie: IMovieDetails;
   isFavorite: boolean;
+  login: string;
 }
 
-const FavoritesButton: FC<FavoritesButtonProps> = ({ movie, isFavorite }) => {
+const FavoritesButton: FC<FavoritesButtonProps> = ({ movie, login, isFavorite }) => {
   const [isFavoriteState, setIsFavoriteState] = useState(isFavorite);
+  const navigate = useNavigate();
   const handleClickButton = () => {
-    if (!isFavorite) {
-      addToFavorites(movie);
+    if (!login) {
+      navigate('/login');
     } else {
-      removeFromFavorites(movie);
+      if (!isFavorite) {
+        addToFavorites(login, movie);
+      } else {
+        removeFromFavorites(login, movie);
+      }
+      setIsFavoriteState(!isFavoriteState);
     }
-    setIsFavoriteState(!isFavoriteState);
   };
   return (
     <button type="button" onClick={handleClickButton}>

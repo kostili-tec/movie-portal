@@ -3,10 +3,14 @@ import useFormState from '../../shared/hooks/useForm';
 import { classNames } from '../../shared/lib/classNames';
 
 const SignUpPage = () => {
-  const { handleInputChange, handleSubmit } = useFormState();
+  const { handleInputChange, handleSubmitRegister } = useFormState();
   return (
     <div className={classNames('page-center')}>
-      <LoginForm handleInputChange={handleInputChange} handleSubmit={handleSubmit} withApiKey />
+      <LoginForm
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmitRegister}
+        submitButtonText="Register"
+      />
     </div>
   );
 };
