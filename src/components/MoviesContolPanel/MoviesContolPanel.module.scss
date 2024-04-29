@@ -1,0 +1,19 @@
+.controlForm {
+  margin-bottom: 1rem;
+}
+
+.searchContainer {
+  position: relative;
+}
+.searchBtn {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-7px, 28px);
+  cursor: pointer;
+  svg {
+    fill: gray;
+  }
+}

@@ -5,8 +5,7 @@ export function classNames(cls: string, mods: Mods = {}, additional: string[] = 
     cls,
     ...additional.filter(Boolean),
     ...Object.entries(mods)
-      .filter(([_, value]) => Boolean(value))
+      .filter(([_, value]) => Boolean(value)) // eslint-disable-line
       .map(([className]) => className),
-  ]
-    .join(' ');
+  ].join(' ');
 }

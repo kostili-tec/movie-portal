@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import ThemeProvider from './app/providers/ThemeProvider/ThemeProvider';
 import App from './app/App';
-import './index.css';
+import ThemeProvider from './app/providers/ThemeProvider/ThemeProvider';
 import { setupStore } from './store/store';
+import ErrorBoundary from './app/providers/ThemeProvider/ErrorBoundary/ErrorBoundary';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
@@ -13,11 +13,12 @@ const store = setupStore();
 
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </BrowserRouter>,
+    <HashRouter>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </ErrorBoundary>
+    </HashRouter>
   </Provider>
 );
-
