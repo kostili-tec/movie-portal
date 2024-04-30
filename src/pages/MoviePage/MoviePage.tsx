@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useGetMovieByIdQuery } from '../../services/OMDbAPIService';
-import MovieContainer from '../../components/MovieContainer/MovieContainer';
+import MovieItem from '../../components/MovieItem/MovieItem';
 import PageLoader from '../../widgets/PageLoader/PageLoader';
 import { useAppSelector } from '../../shared/hooks/redux';
 
@@ -19,7 +19,7 @@ const MoviePage = () => {
 
   return (
     <div>
-      <MovieContainer movie={data} login={login} />
+      <MovieItem movie={data} login={login} />
     </div>
   );
 };

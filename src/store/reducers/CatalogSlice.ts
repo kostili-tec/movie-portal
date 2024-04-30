@@ -5,7 +5,6 @@ interface ICatalog {
   limit: number;
   searchTerm: string;
   count: number;
-  sort: string;
   year: string;
   type: string;
 }
@@ -15,7 +14,6 @@ const initialState: ICatalog = {
   page: 1,
   limit: 10,
   searchTerm: 'star wars',
-  sort: '',
   year: '',
   type: '',
 };

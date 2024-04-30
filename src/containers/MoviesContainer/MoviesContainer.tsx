@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux';
 import { useFindMoviesQuery } from '../../services/OMDbAPIService';
-import { MovieCardMemo } from '../MovieCard/MovieCard';
+import { MovieCardMemo } from '../../components/MovieCard/MovieCard';
 import { classNames } from '../../shared/lib/classNames';
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../../components/Pagination/Pagination';
 import { setCatalog } from '../../store/reducers/CatalogSlice';
-import classes from './MoviesContainer.module.scss';
 import PageLoader from '../../widgets/PageLoader/PageLoader';
+import classes from './MoviesContainer.module.scss';
 
 const MoviesContainer = () => {
   const dispatch = useAppDispatch();

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IMovieDetails } from '../../shared/models/IMovieDetails';
 import { classNames } from '../../shared/lib/classNames';
-import classes from './MovieContainer.module.scss';
+import classes from './MovieItem.module.scss';
 import { checkIsFavorite } from '../../shared/lib/favorites';
 import FavoritesButton from '../../widgets/FavoritesButton/FavoritesButton';
 
@@ -10,7 +10,7 @@ interface MovieContainerProps {
   login: string;
 }
 
-const MovieContainer: FC<MovieContainerProps> = ({ movie, login }) => {
+const MovieItem: FC<MovieContainerProps> = ({ movie, login }) => {
   const isFavorite = checkIsFavorite(login, movie.imdbID);
   return (
     <div className={classNames('', {}, [classes.movieContainer])}>
@@ -97,4 +97,4 @@ const MovieContainer: FC<MovieContainerProps> = ({ movie, login }) => {
   );
 };
 
-export default MovieContainer;
+export default MovieItem;

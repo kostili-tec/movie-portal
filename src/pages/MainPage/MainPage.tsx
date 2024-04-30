@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MoviesContainer from '../../components/MoviesContainer/MoviesContainer';
+import MoviesContainer from '../../containers/MoviesContainer/MoviesContainer';
 import { useAppSelector, useAppDispatch } from '../../shared/hooks/redux';
 import { setCatalog } from '../../store/reducers/CatalogSlice';
 import MoviesContolPanel from '../../components/MoviesContolPanel/MoviesContolPanel';

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { AppLink } from '../../components/AppLink/AppLink';
-import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
+import ThemeSwitcher from '../../containers/ThemeSwitcher/ThemeSwitcher';
 import { useAppSelector, useAppDispatch } from '../../shared/hooks/redux';
 import { logoutUser } from '../../store/reducers/ActionsUser';
 import classes from './Header.module.scss';
