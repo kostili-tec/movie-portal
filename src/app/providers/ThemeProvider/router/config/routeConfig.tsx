@@ -1,10 +1,12 @@
+import { lazy } from 'react';
 import { RouteProps } from 'react-router-dom';
-import MainPage from '../../../../../pages/MainPage/MainPage';
-import SignUpPage from '../../../../../pages/SignUpPage/SignUpPage';
-import LoginPage from '../../../../../pages/LoginPage/LoginPage';
-import NotFoundPage from '../../../../../pages/NotFoundPage/NotFoundPage';
-import FavoritesPage from '../../../../../pages/FavoritesPage/FavoritesPage';
-import MoviePage from '../../../../../pages/MoviePage/MoviePage';
+
+const MainPage = lazy(() => import('../../../../../pages/MainPage/MainPage'));
+const SignUpPage = lazy(() => import('../../../../../pages/SignUpPage/SignUpPage'));
+const LoginPage = lazy(() => import('../../../../../pages/LoginPage/LoginPage'));
+const NotFoundPage = lazy(() => import('../../../../../pages/NotFoundPage/NotFoundPage'));
+const FavoritesPage = lazy(() => import('../../../../../pages/FavoritesPage/FavoritesPage'));
+const MoviePage = lazy(() => import('../../../../../pages/MoviePage/MoviePage'));
 
 export enum AppRoutes {
   MAIN = 'main',
