@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IMovieDetails } from '../../shared/models/IMovieDetails';
 import { addToFavorites, removeFromFavorites } from '../../shared/lib/favorites';
+import classes from './FavoritesButton.module.scss';
 
 interface FavoritesButtonProps {
   movie: IMovieDetails;
@@ -25,7 +26,7 @@ const FavoritesButton: FC<FavoritesButtonProps> = ({ movie, login, isFavorite })
     }
   };
   return (
-    <button type="button" onClick={handleClickButton}>
+    <button type="button" className={classes.favButton} onClick={handleClickButton}>
       {!isFavoriteState ? 'Add to favorites' : 'Remove from favorites'}
     </button>
   );
