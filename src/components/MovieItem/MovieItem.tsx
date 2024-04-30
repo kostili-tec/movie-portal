@@ -4,6 +4,7 @@ import { classNames } from '../../shared/lib/classNames';
 import classes from './MovieItem.module.scss';
 import { checkIsFavorite } from '../../shared/lib/favorites';
 import FavoritesButton from '../../widgets/FavoritesButton/FavoritesButton';
+import EmptyImage from '../EmptyImage/EmptyImage';
 
 interface MovieContainerProps {
   movie: IMovieDetails;
@@ -18,7 +19,7 @@ const MovieItem: FC<MovieContainerProps> = ({ movie, login }) => {
         {movie.Title} ({movie.Year})
       </h2>
       <div>
-        <img src={movie.Poster} alt={movie.Title} />
+        {movie.Poster === 'N/A' ? <EmptyImage /> : <img src={movie.Poster} alt={movie.Title} />}
       </div>
       <p>
         <strong>Rated:</strong> {movie.Rated}

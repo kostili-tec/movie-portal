@@ -13,7 +13,7 @@ const initialState: ICatalog = {
   count: 0,
   page: 1,
   limit: 10,
-  searchTerm: 'star wars',
+  searchTerm: 'lord',
   year: '',
   type: '',
 };

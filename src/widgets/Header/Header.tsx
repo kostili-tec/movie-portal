@@ -14,16 +14,19 @@ const Header = () => {
     navigate('/');
     window.location.reload();
   };
+
   return (
     <header className={classes.header}>
-      <nav>
-        <ul className={classes.ul}>
-          <li>
-            <AppLink to="/">Main</AppLink>
-          </li>
-          <li>{isAuth && <AppLink to="/favorites">Favorites</AppLink>}</li>
-        </ul>
-      </nav>
+      <div className="logo">
+        <AppLink to="/">
+          <img
+            className={classes.logo}
+            src={`${process.env.PUBLIC_URL}/logo.png`}
+            alt="Movie portal"
+          />
+        </AppLink>
+      </div>
+
       <div className={classes.headerAuth}>
         {!isAuth ? (
           <>
@@ -32,8 +35,9 @@ const Header = () => {
           </>
         ) : (
           <>
-            <span>{login}</span>
-            <button type="button" onClick={handleLogout}>
+            <span className={classes.username}>{login}</span>
+            <AppLink to="/favorites">Favorites</AppLink>
+            <button className={classes.logout} type="button" onClick={handleLogout}>
               Logout
             </button>
           </>

@@ -37,13 +37,13 @@ const MoviesContolPanel: FC<MoviesContolPanelProps> = (props) => {
           </svg>
         </button>
       </div>
-      <button type="button" onClick={onShowFilters}>
+      <button type="button" className={classes.filtersButton} onClick={onShowFilters}>
         Additional filters
       </button>
       {showFilters && (
-        <div>
+        <div className={classNames('', {}, [classes.filtersContainer])}>
           <div>
-            <label htmlFor="year:">Year</label>
+            <label htmlFor="year:">Year:</label>
             <input
               onChange={onChangeInput}
               id="year"
@@ -55,15 +55,16 @@ const MoviesContolPanel: FC<MoviesContolPanelProps> = (props) => {
               defaultValue=""
             />
           </div>
-          <label htmlFor="type">Type:</label>
-
-          <select onChange={onChangeSelect} name="type" id="type">
-            <option value="">All</option>
-            <option value="movie">Movie</option>
-            <option value="series">Series</option>
-            <option value="episode">Episode</option>
-            <option value="game">Game</option>
-          </select>
+          <div>
+            <label htmlFor="type">Type:</label>
+            <select className={classes.type} onChange={onChangeSelect} name="type" id="type">
+              <option value="">All</option>
+              <option value="movie">Movie</option>
+              <option value="series">Series</option>
+              <option value="episode">Episode</option>
+              <option value="game">Game</option>
+            </select>
+          </div>
         </div>
       )}
     </form>

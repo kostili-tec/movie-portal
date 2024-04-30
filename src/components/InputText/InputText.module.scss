@@ -8,7 +8,7 @@
 
 .label {
   font-size: 0.75rem;
-  color: #818CF8;
+  color: var(--font-violet);
   font-weight: 700;
   position: relative;
   top: 0.5rem;
@@ -16,23 +16,24 @@
   padding: 0 5px 2px;
   background: #e8e8e8;
   width: fit-content;
-  border: 1px #818CF8 solid;
+  border: 1px #818cf8 solid;
   border-radius: 5px;
 }
 
 .input {
   padding: 11px 10px;
-  border: 2px #818CF8 solid;
+  border: 2px solid var(--font-violet);
   border-radius: 5px;
   background: var(--input-bg);
   color: var(--font-color);
+  font-weight: 500;
   &:focus {
     outline: none;
   }
 }
 
 .input:-webkit-autofill,
-.input:-webkit-autofill:hover, 
+.input:-webkit-autofill:hover,
 .input:-webkit-autofill:focus {
   background: var(--input-bg);
   -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset;

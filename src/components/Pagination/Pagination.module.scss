@@ -1,3 +1,12 @@
+.pagination {
+  margin: 0 auto;
+  text-align: center;
+  width: fit-content;
+  background-color: var(--input-bg-hover);
+  padding: 0 20px;
+  border-radius: 20px;
+}
+
 .ul {
   display: flex;
   flex-direction: row;
@@ -7,17 +16,19 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 24px;
+  
 }
 
 .li {
   // padding: 5px;
-  background-color: var(--violet-color);
+  // background-color: var(--violet-color);
   cursor: default;  
 }
 
 .button {
   border: none;
-  background-color: var(--violet-color);
+  // background-color: var(--violet-color);
+  background-color: var(--input-bg-hover);
   color: var(--font-color);
   padding: 5px;
   min-width: 30px;
@@ -29,12 +40,6 @@
 }
 
 .active {
-  background-color: orange;
+  background-color: var(--font-violet);
+  color: #fff;
 }
-
-/* .pointer {
-  cursor: pointer;
-  button {
-    cursor: pointer;
-  }
-} */

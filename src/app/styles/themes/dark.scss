@@ -1,9 +1,16 @@
 .app.dark {
   --bg-color: #282c34;
-  --font-color: #fff;
-  --link-color-primary: #09d3ac; 
-  --header-bg: #18191a;
 
+  --font-color: #fff;
+  --font-violet: #7800ff;
+  --font-violet-light: #cd00ff;
+  
+  --link-color-primary: #09d3ac; 
+  --header-bg: #1a1a1a;
+  --header-link: #cd00ff;
+  --header-link-hover: #7800ff;
+
+  --input-color: #cd00ff;
   --input-bg: #3b3e47;
   --input-bg-hover: #212329;
 

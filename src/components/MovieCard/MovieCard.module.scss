@@ -5,3 +5,19 @@
     color: var(--font-color);
   }
 }
+
+.movieCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+}
+
+.posterContainer {
+  height: 468px;
+  max-width: 100%;
+  margin-bottom: 12px;
+  img {
+    align-self: center;
+  }
+}

@@ -2,9 +2,41 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 200px;
+  padding: 0 150px;
   background-color: var(--header-bg);
   height: 100px;
+
+  a {
+    text-decoration: none;
+    color: var(--header-link);
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 0.1s;
+    &:hover {
+      color: var(--header-link-hover);
+    }
+  }
+}
+
+.logo {
+  width: 250px;
+}
+
+.username,
+.logout {
+  color: var(--header-link);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.logout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+  &:hover {
+    color: var(--header-link-hover);
+  }
 }
 
 .ul {
@@ -15,6 +47,7 @@
 
 .headerAuth {
   display: flex;
+  gap: 1rem;
   a {
     margin-right: 6px;
   }
