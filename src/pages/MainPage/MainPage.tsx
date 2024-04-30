@@ -30,6 +30,7 @@ const MainPage = () => {
     if (showFilters) {
       dispatch(setCatalog({ ...catalogState, searchTerm: search, type, year, page: 1 }));
     } else {
+      setSearchFormState((prevState) => ({ ...prevState, type: '', year: '' }));
       dispatch(setCatalog({ ...catalogState, searchTerm: search, type: '', year: '', page: 1 }));
     }
   };
