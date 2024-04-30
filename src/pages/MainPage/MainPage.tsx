@@ -18,11 +18,20 @@ const MainPage = () => {
     year: '',
     type: '',
   });
+  const [showFilters, setShowFilters] = useState(false);
+
+  const handleShowFilters = () => {
+    setShowFilters(!showFilters);
+  };
 
   const handleSumbitSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const { search, type, year } = searchFormState;
-    dispatch(setCatalog({ ...catalogState, type, year, searchTerm: search, page: 1 }));
+    if (showFilters) {
+      dispatch(setCatalog({ ...catalogState, searchTerm: search, type, year, page: 1 }));
+    } else {
+      dispatch(setCatalog({ ...catalogState, searchTerm: search, type: '', year: '', page: 1 }));
+    }
   };
 
   const handleSearchFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,6 +55,8 @@ const MainPage = () => {
         onChangeInput={handleSearchFormChange}
         onChangeSelect={handleChangeType}
         onSubmit={handleSumbitSearch}
+        showFilters={showFilters}
+        onShowFilters={handleShowFilters}
       />
       <MoviesContainer />
     </div>

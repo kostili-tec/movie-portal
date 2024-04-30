@@ -7,10 +7,12 @@ interface MoviesContolPanelProps {
   onChangeInput: React.ChangeEventHandler<HTMLInputElement>;
   onChangeSelect: React.ChangeEventHandler<HTMLSelectElement>;
   onSubmit: (e: React.FormEvent) => void;
+  onShowFilters: () => void;
+  showFilters: boolean;
 }
 
 const MoviesContolPanel: FC<MoviesContolPanelProps> = (props) => {
-  const { onChangeInput, onChangeSelect, onSubmit } = props;
+  const { onChangeInput, onChangeSelect, onSubmit, onShowFilters, showFilters } = props;
   return (
     <form action="" onSubmit={onSubmit} className={classNames('', {}, [classes.controlForm])}>
       <div className={classes.searchContainer}>
@@ -33,27 +35,35 @@ const MoviesContolPanel: FC<MoviesContolPanelProps> = (props) => {
           </svg>
         </button>
       </div>
-      <div>
-        <label htmlFor="year:">Year</label>
-        <input
-          onChange={onChangeInput}
-          id="year"
-          name="year"
-          type="number"
-          min={1900}
-          max={2024}
-          className={classes.year}
-          defaultValue=""
-        />
-      </div>
-      <label htmlFor="type">Type:</label>
-      <select onChange={onChangeSelect} name="type" id="type">
-        <option value="">All</option>
-        <option value="movie">Movie</option>
-        <option value="series">Series</option>
-        <option value="episode">Episode</option>
-        <option value="game">Game</option>
-      </select>
+      <button type="button" onClick={onShowFilters}>
+        Additional filters
+      </button>
+      {showFilters && (
+        <div>
+          <div>
+            <label htmlFor="year:">Year</label>
+            <input
+              onChange={onChangeInput}
+              id="year"
+              name="year"
+              type="number"
+              min={1900}
+              max={2024}
+              className={classes.year}
+              defaultValue=""
+            />
+          </div>
+          <label htmlFor="type">Type:</label>
+
+          <select onChange={onChangeSelect} name="type" id="type">
+            <option value="">All</option>
+            <option value="movie">Movie</option>
+            <option value="series">Series</option>
+            <option value="episode">Episode</option>
+            <option value="game">Game</option>
+          </select>
+        </div>
+      )}
     </form>
   );
 };
