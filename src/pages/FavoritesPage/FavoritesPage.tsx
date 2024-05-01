@@ -23,7 +23,11 @@ const FavoritesPage = () => {
   });
 
   if (!favMovies || favMovies.length === 0) {
-    return <div>No favorites</div>;
+    return (
+      <div className="no-favorites">
+        <h2>No favorites</h2>
+      </div>
+    );
   }
 
   const handleClickPagination = (e: React.MouseEvent<HTMLButtonElement>) => {

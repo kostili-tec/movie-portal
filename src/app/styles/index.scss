@@ -58,6 +58,16 @@
   }
 }
 
+.no-favorites {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 32px;
+  }
+}
+
 .theme-switcher {
   width: 188px;
 }
@@ -172,7 +182,7 @@
   }
 }
 
-@media screen and (max-width: 424px) { 
+@media screen and (max-width: 424px) {
   .main {
     padding: 100px 10px 60px;
   }
