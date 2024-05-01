@@ -76,6 +76,7 @@
   background-color: slateGray;
   box-shadow: -4px 4px 15px inset rgba(0, 0, 0, 0.4);
   transform: translate(74px, -3px);
+  cursor: pointer;
 
   &::before,
   &::after {
@@ -137,5 +138,20 @@
 
   span::after {
     transform: translate3d(46px, 0, 0);
+  }
+}
+
+@media screen and (max-width: 1084px) {
+  .main {
+    padding: 0 50px 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    padding: 100px 50px 60px;
+  }
+  .theme-switch__label {
+    transform: translate(55px, -3px);
   }
 }
