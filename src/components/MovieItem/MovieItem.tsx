@@ -117,11 +117,6 @@ const MovieItem: FC<MovieContainerProps> = ({ movie, login }) => {
             </div>
 
             <div className={classes.infoItem}>
-              <span className={classes.infoKey}>imdbID:</span>
-              <span className={classes.infoValue}>{movie.imdbID}</span>
-            </div>
-
-            <div className={classes.infoItem}>
               <span className={classes.infoKey}>Type:</span>
               <span className={classes.infoValue}>{movie.Type}</span>
             </div>
