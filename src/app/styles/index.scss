@@ -35,6 +35,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
+  justify-items: center;
 }
 
 .main {
@@ -147,11 +148,17 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 834px) {
   .main {
     padding: 100px 50px 60px;
   }
   .theme-switch__label {
     transform: translate(55px, -3px);
+  }
+}
+
+@media screen and (max-width: 424px) { 
+  .main {
+    padding: 100px 10px 60px;
   }
 }

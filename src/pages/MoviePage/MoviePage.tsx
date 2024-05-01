@@ -17,11 +17,7 @@ const MoviePage = () => {
     return <div>No data</div>;
   }
 
-  return (
-    <div>
-      <MovieItem movie={data} login={login} />
-    </div>
-  );
+  return <MovieItem movie={data} login={login} />;
 };
 
 export default MoviePage;

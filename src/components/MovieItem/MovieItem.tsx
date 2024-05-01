@@ -86,7 +86,7 @@ const MovieItem: FC<MovieContainerProps> = ({ movie, login }) => {
               <span className={classes.infoValue}>{movie.Awards}</span>
             </div>
 
-            <div className={classes.infoItem}>
+            <div className={classNames(classes.infoItem, {}, [classes.raitings])}>
               <span className={classes.infoKey}>Ratings:</span>
               <ul className={classes.ratingUl}>
                 {movie.Ratings.map((rating) => (

@@ -44,3 +44,30 @@
     min-width: 210px;
   }
 }
+
+
+@media screen and (max-width: 1024px) {
+  .infoKey {
+    min-width: 100px;
+  }
+}
+
+@media screen and (max-width: 874px) {
+  .top {
+    flex-direction: column;
+  }
+  .topLeft {
+    display: flex;
+    justify-content: center;
+  }
+  .raitings {
+    display: flex;
+    flex-direction: column;
+    li {
+      gap: 10px;
+      .infoKey {
+        min-width: auto;
+      }
+    }
+  }
+ }

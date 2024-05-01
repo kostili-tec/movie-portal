@@ -43,3 +43,11 @@
   background-color: var(--font-violet);
   color: #fff;
 }
+
+
+@media screen and (max-width: 424px) { 
+  .ul {
+    font-size: 16px;
+    gap: 3px;
+  }
+}
