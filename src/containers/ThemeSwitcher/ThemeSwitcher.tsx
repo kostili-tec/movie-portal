@@ -9,7 +9,7 @@ const ThemeSwitcher: FC = () => {
     inputRef.current.checked = theme === Theme.DARK;
   }, []);
   return (
-    <div>
+    <div className="theme-switcher">
       <input
         type="checkbox"
         id="themeSwitch"

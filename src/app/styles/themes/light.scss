@@ -1,12 +1,21 @@
 .app.light {
   --bg-color: #ffffff;
+
   --font-color: #0e0e0e;
+  --font-violet: #7800ff;
+  --font-violet-light: #cd00ff;
+  
   --link-color-primary: #09d3ac; 
-  --header-bg: #e4e4e4;
+  // --header-bg: #e4e4e4;
+  --header-bg: #ffffff;
+  --header-link: #7800ff;
+  --header-link-hover: #cd00ff;
 
   --input-bg: #ffffff;
-
   --input-bg-hover: #abb8dd;
 
   --violet-color: #818CF8;
+
+  --loader-main: #969696;
+  --loader-second: #7800ff;
 }

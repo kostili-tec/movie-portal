@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { IMovie } from '../../shared/models/IMovie';
 import { AppLink } from '../AppLink/AppLink';
 import classes from './MovieCard.module.scss';
+import EmptyImage from '../EmptyImage/EmptyImage';
 
 interface MovieCardProps extends IMovie {}
 
@@ -9,8 +10,10 @@ const MovieCard: FC<MovieCardProps> = (props) => {
   const { Poster, Title, Type, Year, imdbID } = props;
   return (
     <AppLink to={`/movie/${imdbID}`} className={classes.movieLink}>
-      <article>
-        <img src={Poster} alt={Title} />
+      <article className={classes.movieCard}>
+        <div className={classes.posterContainer}>
+          {Poster === 'N/A' ? <EmptyImage /> : <img src={Poster} alt={Title} />}
+        </div>
         <h4>{Title}</h4>
         <div>
           <span>Year: </span>

@@ -33,32 +33,34 @@ const Pagination: FC<PaginationProps> = (props) => {
   // Последняя страница
   if (right < length) items.push(length);
   return (
-    <ul className={classNames('', {}, [classes.ul])}>
-      {items.map((number, index) => (
-        <li
-          key={number !== null ? number : `null-${index}`}
-          className={classNames('', { [classes.pointer]: number !== null }, [classes.li])}
-        >
-          {number ? (
-            <button
-              type="button"
-              className={classNames('', { [classes.active]: number === page }, [
-                classes.button,
-                classes.buttonUsable,
-              ])}
-              value={number}
-              onClick={onClick}
-            >
-              {number}
-            </button>
-          ) : (
-            <button type="button" className={classNames('', {}, [classes.button])}>
-              ...
-            </button>
-          )}
-        </li>
-      ))}
-    </ul>
+    <div className={classNames('', {}, [classes.pagination])}>
+      <ul className={classNames('', {}, [classes.ul])}>
+        {items.map((number, index) => (
+          <li
+            key={number !== null ? number : `null-${index}`}
+            className={classNames('', { [classes.pointer]: number !== null }, [classes.li])}
+          >
+            {number ? (
+              <button
+                type="button"
+                className={classNames('', { [classes.active]: number === page }, [
+                  classes.button,
+                  classes.buttonUsable,
+                ])}
+                value={number}
+                onClick={onClick}
+              >
+                {number}
+              </button>
+            ) : (
+              <button type="button" className={classNames('', {}, [classes.button])}>
+                ...
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 export default Pagination;

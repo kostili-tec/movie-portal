@@ -1,20 +1,20 @@
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/redux';
 import { useFindMoviesQuery } from '../../services/OMDbAPIService';
-import { MovieCardMemo } from '../MovieCard/MovieCard';
+import { MovieCardMemo } from '../../components/MovieCard/MovieCard';
 import { classNames } from '../../shared/lib/classNames';
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../../components/Pagination/Pagination';
 import { setCatalog } from '../../store/reducers/CatalogSlice';
+import PageLoader from '../../widgets/PageLoader/PageLoader';
 import classes from './MoviesContainer.module.scss';
 
 const MoviesContainer = () => {
   const dispatch = useAppDispatch();
-  const { apiKey } = useAppSelector((state) => state.userReducer);
   const catalogState = useAppSelector((state) => state.catalogReducer);
-  const { page, searchTerm } = catalogState;
-  const { data, isFetching } = useFindMoviesQuery({ apiKey, searchTerm, page });
+  const { page, searchTerm, type, year } = catalogState;
+  const { data, isFetching } = useFindMoviesQuery({ searchTerm, page, type, year });
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <PageLoader />;
   }
   if (!data.totalResults) {
     return <div>No movies</div>;

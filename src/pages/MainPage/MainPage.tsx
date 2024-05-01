@@ -1,28 +1,64 @@
 import { useState } from 'react';
-import MoviesContainer from '../../components/MoviesContainer/MoviesContainer';
+import MoviesContainer from '../../containers/MoviesContainer/MoviesContainer';
 import { useAppSelector, useAppDispatch } from '../../shared/hooks/redux';
 import { setCatalog } from '../../store/reducers/CatalogSlice';
 import MoviesContolPanel from '../../components/MoviesContolPanel/MoviesContolPanel';
 
+interface SearchState {
+  search: string;
+  year: string;
+  type: string;
+}
+
 const MainPage = () => {
-  const { isAuth } = useAppSelector((state) => state.userReducer);
   const dispatch = useAppDispatch();
-  const [searchState, setSearchState] = useState('');
   const catalogState = useAppSelector((state) => state.catalogReducer);
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchState(e.target.value);
-  };
-  const handleSumbitSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    dispatch(setCatalog({ ...catalogState, searchTerm: searchState, page: 1 }));
+  const [searchFormState, setSearchFormState] = useState<SearchState>({
+    search: '',
+    year: '',
+    type: '',
+  });
+  const [showFilters, setShowFilters] = useState(false);
+
+  const handleShowFilters = () => {
+    setShowFilters(!showFilters);
   };
 
-  if (!isAuth) {
-    return <div>Main Page</div>;
-  }
+  const handleSumbitSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { search, type, year } = searchFormState;
+    if (showFilters) {
+      dispatch(setCatalog({ ...catalogState, searchTerm: search, type, year, page: 1 }));
+    } else {
+      setSearchFormState((prevState) => ({ ...prevState, type: '', year: '' }));
+      dispatch(setCatalog({ ...catalogState, searchTerm: search, type: '', year: '', page: 1 }));
+    }
+  };
+
+  const handleSearchFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setSearchFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleChangeType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSearchFormState((prevState) => ({
+      ...prevState,
+      type: e.target.value,
+    }));
+  };
+
   return (
     <div>
-      <MoviesContolPanel onChange={handleSearch} onSubmit={handleSumbitSearch} />
+      <MoviesContolPanel
+        onChangeInput={handleSearchFormChange}
+        onChangeSelect={handleChangeType}
+        onSubmit={handleSumbitSearch}
+        showFilters={showFilters}
+        onShowFilters={handleShowFilters}
+      />
       <MoviesContainer />
     </div>
   );

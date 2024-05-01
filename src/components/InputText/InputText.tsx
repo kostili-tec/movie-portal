@@ -10,10 +10,11 @@ interface InputTextProps {
   autoComplete?: React.HTMLInputAutoCompleteAttribute;
   placeholder?: string;
   defaultValue?: string;
+  children?: React.ReactNode;
 }
 
 const InputText: FC<InputTextProps> = (props) => {
-  const { autoComplete, label, onChange, type, placeholder, name, defaultValue } = props;
+  const { autoComplete, label, onChange, type, placeholder, name, defaultValue, children } = props;
   const id = useId();
   return (
     <div className={classes.coolinput}>
@@ -30,6 +31,7 @@ const InputText: FC<InputTextProps> = (props) => {
         name={name}
         defaultValue={defaultValue}
       />
+      {children}
     </div>
   );
 };

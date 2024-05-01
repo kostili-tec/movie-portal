@@ -1,29 +1,32 @@
 import { IMovieDetails } from '../models/IMovieDetails';
 
-export const getFavorites = (): IMovieDetails[] => JSON.parse(localStorage.getItem('favorites')) || [];
+const LSFavKey = 'favorites';
 
-export const checkIsFavorite = (id: string) => {
-  const favorites = getFavorites();
+export const getFavorites = (login: string): IMovieDetails[] =>
+  JSON.parse(localStorage.getItem(`${login}-${LSFavKey}`)) || [];
+
+export const checkIsFavorite = (login: string, id: string) => {
+  const favorites = getFavorites(login);
   if (favorites) {
     return favorites.some((movie) => movie.imdbID === id);
   }
   return false;
 };
 
-export const addToFavorites = (movie: IMovieDetails) => {
-  const favorites = getFavorites();
+export const addToFavorites = (login: string, movie: IMovieDetails) => {
+  const favorites = getFavorites(login);
   if (!favorites) {
-    localStorage.setItem('favorites', JSON.stringify([movie]));
+    localStorage.setItem(`${login}-${LSFavKey}`, JSON.stringify([movie]));
   } else {
     favorites.push(movie);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem(`${login}-${LSFavKey}`, JSON.stringify(favorites));
   }
 };
 
-export const removeFromFavorites = (movie: IMovieDetails) => {
-  const favorites = getFavorites();
+export const removeFromFavorites = (login: string, movie: IMovieDetails) => {
+  const favorites = getFavorites(login);
   const filteredFavorites = favorites.filter((favMovie) => favMovie.imdbID !== movie.imdbID);
-  localStorage.setItem('favorites', JSON.stringify(filteredFavorites));
+  localStorage.setItem(`${login}-${LSFavKey}`, JSON.stringify(filteredFavorites));
 };
 
 export const chunkArray = <T>(arr: T[], size: number): T[][] =>

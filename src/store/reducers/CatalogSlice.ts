@@ -5,15 +5,17 @@ interface ICatalog {
   limit: number;
   searchTerm: string;
   count: number;
-  sort: string;
+  year: string;
+  type: string;
 }
 
 const initialState: ICatalog = {
   count: 0,
   page: 1,
   limit: 10,
-  searchTerm: 'star wars',
-  sort: '',
+  searchTerm: 'lord',
+  year: '',
+  type: '',
 };
 
 export const catalogSlice = createSlice({

@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import { useAppDispatch } from './redux';
 import { loginUser, registerUser } from '../../store/reducers/ActionsUser';
+import {
+  checkIsAvilableLogin,
+  checkIsExistUser,
+  isValidLogin,
+  isValidPassword,
+} from '../lib/validation';
 
 interface FormState {
   login: string;
   password: string;
-  apiKey: string;
+  errorMessage: string;
 }
 
 const initialFormState: FormState = {
   login: '',
   password: '',
-  apiKey: '',
+  errorMessage: '',
 };
 
 const useFormState = () => {
@@ -26,26 +32,57 @@ const useFormState = () => {
     }));
   };
 
+  const validateForm = () => isValidLogin(formState.login) && isValidPassword(formState.password);
+
   const resetForm = () => {
     setFormState(initialFormState);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmitLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const { login, password, apiKey } = formState;
-    if (apiKey) {
-      dispatch(registerUser(login, password, apiKey));
-      console.log('form submitted:', formState);
+    const { login, password } = formState;
+    if (validateForm()) {
+      if (checkIsExistUser(login, password)) {
+        dispatch(loginUser(login, password));
+        resetForm();
+      } else {
+        setFormState({ ...formState, errorMessage: 'Invalid login or password' });
+      }
     } else {
-      dispatch(loginUser(login, password));
+      setFormState((prevFormState) => ({
+        ...prevFormState,
+        errorMessage: 'Invalid login or password',
+      }));
     }
-    resetForm();
+  };
+
+  const handleSubmitRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { login, password } = formState;
+    if (validateForm()) {
+      if (checkIsAvilableLogin(login)) {
+        dispatch(registerUser(login, password));
+        resetForm();
+      } else {
+        setFormState((prevFormState) => ({
+          ...prevFormState,
+          errorMessage: 'This login is already taken',
+        }));
+      }
+    } else {
+      setFormState((prevFormState) => ({
+        ...prevFormState,
+        errorMessage: 'Invalid login or password',
+      }));
+    }
   };
 
   return {
     formState,
     handleInputChange,
-    handleSubmit,
+    handleSubmitLogin,
+    handleSubmitRegister,
     resetForm,
   };
 };

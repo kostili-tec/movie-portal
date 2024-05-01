@@ -1,26 +1,23 @@
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../shared/hooks/redux';
 import { useGetMovieByIdQuery } from '../../services/OMDbAPIService';
-import MovieContainer from '../../components/MovieContainer/MovieContainer';
+import MovieItem from '../../components/MovieItem/MovieItem';
+import PageLoader from '../../widgets/PageLoader/PageLoader';
+import { useAppSelector } from '../../shared/hooks/redux';
 
 const MoviePage = () => {
+  const { login } = useAppSelector((state) => state.userReducer);
   const params = useParams();
-  const { apiKey } = useAppSelector((state) => state.userReducer);
-  const { data, isFetching } = useGetMovieByIdQuery({ apiKey, movieId: params.id });
+  const { data, isFetching } = useGetMovieByIdQuery({ movieId: params.id });
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <PageLoader />;
   }
 
   if (!data) {
     return <div>No data</div>;
   }
 
-  return (
-    <div>
-      <MovieContainer movie={data} />
-    </div>
-  );
+  return <MovieItem movie={data} login={login} />;
 };
 
 export default MoviePage;
