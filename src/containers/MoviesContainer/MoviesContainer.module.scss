@@ -1,5 +1,5 @@
 .movieContainer {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .moviesList {
@@ -9,7 +9,7 @@
   justify-items: center;
 }
 
-@media screen and (max-width: 424px) { 
+@media screen and (max-width: 424px) {
   .moviesList {
     grid-template-columns: 300px;
     justify-content: center;
